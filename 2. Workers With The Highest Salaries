@@ -1,0 +1,25 @@
+You have been asked to find the job titles of the highest-paid employees.
+
+
+Your output should include the highest-paid title or multiple titles with the same salary.
+
+Tables: worker, title
+
+SQL --------------------------------------------
+
+WITH A AS				
+(select rank() over(order by w.salary desc) as something,				
+t.worker_title				
+				
+from title t				
+join worker w				
+on t.worker_ref_id = w.worker_id				
+)				
+SELECT worker_title				
+				
+FROM A				
+WHERE something = 1				
+
+Python -----------------------------------------
+
+
