@@ -5,7 +5,7 @@ Your output should include the highest-paid title or multiple titles with the sa
 
 Tables: worker, title
 
-SQL -------------------------------------------- 1 ----------- First Solution
+SQL -------------------------------------------- 1 ----------- First Solution || 21st Feb
 
 WITH A AS				
 (select rank() over(order by w.salary desc) as something,				
@@ -21,7 +21,7 @@ FROM A
 WHERE something = 1
 
 
-SQL -------------------------------------------- 2 ----------- Second Solution
+SQL -------------------------------------------- 2 ----------- Second Solution || 22nd Feb
 
 
 SELECT worker_title
