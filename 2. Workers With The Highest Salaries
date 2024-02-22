@@ -5,7 +5,7 @@ Your output should include the highest-paid title or multiple titles with the sa
 
 Tables: worker, title
 
-SQL --------------------------------------------
+SQL -------------------------------------------- 1 ----------- First Solution
 
 WITH A AS				
 (select rank() over(order by w.salary desc) as something,				
@@ -18,7 +18,25 @@ on t.worker_ref_id = w.worker_id
 SELECT worker_title				
 				
 FROM A				
-WHERE something = 1				
+WHERE something = 1
+
+
+SQL -------------------------------------------- 2 ----------- Second Solution
+
+
+SELECT worker_title
+FROM
+(
+select t.worker_title, max(w.salary) as max_salary
+
+from worker w 
+join title t
+on w.worker_id = t.worker_ref_id
+
+group by t.worker_title
+
+having max(salary) = (Select max(salary) from worker)
+) as some_name_I_have_to_give;
 
 Python -----------------------------------------
 
