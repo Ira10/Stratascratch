@@ -1,1 +1,14 @@
-/2. Workers With The Highest Salaries || February 21
+2. Workers With The Highest Salaries || February 21
+
+---------------- python -----------------
+
+# Import your libraries						
+import pandas as pd						
+						
+# Start writing code						
+df1 = worker.reset_index()						
+df2 = title.reset_index()						
+df3 = df2.merge(df1, left_on = 'worker_ref_id', right_on = 'worker_id', how = 'inner')						
+df3 = df3.sort_values(by='salary',ascending=False,inplace=False).head(2)						
+df3 = df3.rename(columns={'worker_title': 'best_paid_title'}).reset_index(drop = True)						
+df3[['best_paid_title']]						
