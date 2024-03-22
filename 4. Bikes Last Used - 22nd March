@@ -8,3 +8,16 @@ FROM dc_bikeshare_q1_2012
 GROUP BY bike_number
 ORDER BY last_used desc;
 
+
+---------- Python --------------
+
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+dc_bikeshare_q1_2012.groupby('bike_number')['end_time'].max()
+dc_bikeshare_q1_2012[['bike_number','end_time']].rename(columns={"end_time": "last_used"}).sort_values(by='last_used', ascending=False)
+
+-----stratascratch solution ------
+result = dc_bikeshare_q1_2012.groupby('bike_number')['end_time'].max().to_frame( 'last_used').reset_index().sort_values(by='last_used', ascending=False)
+
